@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('image');
             $table->text('short_description', 500);
             $table->text('description');
-            $table->decimal('standard_cost');
-            $table->decimal('list_price');
+            $table->decimal('standard_cost', 16, 0); //gia ban ra
+            $table->decimal('list_price', 16, 0); //gia nhap vao
             $table->integer('quantity_per_unit');
             $table->boolean('discontinued');
             $table->boolean('is_featured');

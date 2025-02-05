@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->text('discount_name', 500);
             $table->float('discount_amount');
-            $table->boolean('is_fixed');
+            $table->boolean('is_fixed'); //giam gia tien co dinh neu = 1 vd: 50k, con = 0 thi giam gia theo %
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->foreign('product_id')->references('id')->on('shop_products');
