@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AclUser;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,5 +8,6 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function () {
-    return view('admin');
+    $users = AclUser::all();
+    dd($users);
 });
