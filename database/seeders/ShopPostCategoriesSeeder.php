@@ -27,20 +27,20 @@ class ShopPostCategoriesSeeder extends Seeder
         }
         DB::table('shop_posts_categories')->insert($list2);
 
-
+        $user_id = DB::table('acl_users')->pluck('id');
+        $post_category_id = DB::table('shop_posts_categories')->pluck('id');
         $list3 = [];
         for($i = 0; $i < 10; $i++) {
             $row3 = [
-                'post_slug' => $faker->regexify('[A-Z]{5}[0-9]{3}'),
+                'post_slug' => $faker->word(),
                 'post_title' => $faker->words(3, true),
                 'post_content' => $faker->text(),
-                'post_excerpt' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
-                'post_type' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
-                'post_excerpt' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
-                'post_status' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
+                'post_excerpt' => $faker->text(),
+                'post_type' => $faker->words(3, true),
+                'post_status' => $faker->randomElement(['Completed', 'pending', 'cancelled']),
                 'post_image' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
-                'user_id' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
-                'post_category_id' => 'categories/category-'.$faker->numberBetween(1,2).'.png',
+                'user_id' => $faker->randomElement($user_id),
+                'post_category_id' => $faker->randomElement($post_category_id),
                 'created_at' => now(),
             ];
             array_push($list3, $row3);

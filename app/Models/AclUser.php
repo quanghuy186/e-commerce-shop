@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\AclUserHasRole;
 class AclUser extends Model
 {
     protected $table = 'acl_users';
@@ -31,12 +31,16 @@ class AclUser extends Model
         'created_at',
         'updated_at'
     ];
-    protected $guarded = ['id'];
-    protected $primaryKey = ['id'];
+    protected $guarded = 'id';
+    protected $primaryKey = 'id';
     protected $dates = [
         'birthday',
         'created_at',
         'updated_at',
     ];
     protected $dateFormat = 'Y-m-d H:i:s';
+
+    public function roles(){
+        return $this->hasMany(AclUserHasRole::class, 'user_id', 'id');
+    }
 }

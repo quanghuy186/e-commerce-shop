@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AclRole extends Model
+class AclPermission extends Model
 {
-    protected $table = 'acl_roles';
-    protected $primaryKey = 'id';
+    protected $table = 'acl_permissions';
+    protected $primaryKey = ['id'];
     protected $fillable = [
         'name',
         'display_name',
@@ -16,14 +16,10 @@ class AclRole extends Model
         'updated_at'
     ];
 
-    protected $guarded = 'id';
+    protected $guarded = ['id'];
     protected $dates = [
         'birthday',
         'created_at',
     ];
     protected $dateFormat = 'Y-m-d H:i:s';
-
-    public function users(){
-        return $this->hasMany(AclUserHasRole::class, 'role_id', 'id');
-    }
 }

@@ -23,6 +23,8 @@ use Database\Seeders\ShopExportsSeeder;
 use Database\Seeders\ShopVouchersSeeder;
 use Database\Seeders\AclRolesSeeder;
 use Database\Seeders\AclRoleHasPermissionsSeeder;
+use Database\Seeders\ShopPostCategoriesSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -56,6 +58,8 @@ class DatabaseSeeder extends Seeder
         $this->call([ShopVouchersSeeder::class]);
         $this->call([AclRolesSeeder::class]);
         $this->call([AclRoleHasPermissionsSeeder::class]);
+
+        $this->call([ShopPostCategoriesSeeder::class]);
 
         //acl user
 
