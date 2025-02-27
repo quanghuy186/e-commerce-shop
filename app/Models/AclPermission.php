@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AclPermission extends Model
 {
     protected $table = 'acl_permissions';
-    protected $primaryKey = ['id'];
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'display_name',

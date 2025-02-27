@@ -3,31 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\AclUserHasRole;
-use App\Models\ShopPost;
-class AclUser extends Model
+use App\Models\ShopOrder;
+
+class ShopCustomer extends Model
 {
-    protected $table = 'acl_users';
+    protected $table = 'shop_customers';
     protected $fillable = [
         'username',
+        'password',
         'last_name',
         'first_name',
         'gender',
         'email',
+        'address',
         'birthday',
         'avatar',
         'code',
-        'job_title',
-        'department',
-        'manager_id',
         'phone',
-        'address1',
-        'address2',
+        'company',
+        'billing_address',
+        'shipping_address',
         'city',
         'state',
-        'country',
         'postal_code',
-        'active_code',
+        'country',
+        'remember_token',
+        'activate_code',
         'status',
         'created_at',
         'updated_at'
@@ -35,17 +36,16 @@ class AclUser extends Model
     protected $guarded = 'id';
     protected $primaryKey = 'id';
     protected $dates = [
-        'birthday',
         'created_at',
         'updated_at',
     ];
     protected $dateFormat = 'Y-m-d H:i:s';
 
-    public function roles(){
-        return $this->hasMany(AclUserHasRole::class, 'user_id', 'id');
+    public function orders(){
+        return $this->hasMany(ShopOrder::class, 'customer_id', 'id');
     }
 
-    public function posts(){
-        return $this->hasMany(ShopPost::class, 'user_id', 'id');
-    }
+    // public function reviews(){
+    //     return $this->hasMany(ShopProductReview::class, 'customer_id', 'id');
+    // }
 }
